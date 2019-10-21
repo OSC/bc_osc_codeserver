@@ -1,0 +1,12 @@
+---
+cluster: "quick"
+form:
+  - bc_account
+  - bc_num_hours
+  - working_dir
+attributes:
+  working_dir:
+    label: "Working Directory"
+    data-filepicker: true
+    readonly: false
+    help: "Select your project directory; defaults to $HOME"
