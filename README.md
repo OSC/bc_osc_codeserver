@@ -53,7 +53,7 @@ use and place this wherever you store batch connect apps (`/var/www/ood/apps/sys
     ```diff
      # An arbitrary path...
     - /fs/project/PZS0714/mrodgers/bin/code-server-2.1523-vsc1.38.1 \
-    + /users/PZS0562/efranz/code-server2.1692-vsc1.39.2-linux-x86_64/code-server
+    + /users/PZS0562/efranz/code-server2.1692-vsc1.39.2-linux-x86_64/code-server \
      --auth=password \
      --port="$port" \
     ```
