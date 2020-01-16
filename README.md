@@ -24,18 +24,43 @@ OnDemand node):
 
 ## Install
 
-Use Git to clone this app and checkout the desired branch/version you want to
-use:
+1. Use Git to clone this app and checkout the desired branch/version you want to
+use and place this wherever you store batch connect apps (`/var/www/ood/apps/sys` or `~/ondemand/dev`):
 
-```sh
-scl enable git29 -- git clone <repo>
-cd <dir>
-scl enable git29 -- git checkout <tag/branch>
-```
+    ```sh
+    scl enable git29 -- git clone <repo>
+    cd <dir>
+    scl enable git29 -- git checkout <tag/branch>
+    ```
 
-You will not need to do anything beyond this as all necessary assets are
-installed. You will also not need to restart this app as it isn't a Passenger
-app.
+2. Deloy code-server on your systems.
+
+    ```sh
+    # replace URL with latest release from code-server
+    wget https://github.com/cdr/code-server/releases/download/2.1692-vsc1.39.2/code-server2.1692-vsc1.39.2-linux-x86_64.tar.gz
+    tar -xzf code-server2.1692-vsc1.39.2-linux-x86_64.tar.gz
+    ```
+    
+3. You will notice code-server is an executable inside that directory and can get the full path: 
+    
+    ```sh
+    $ readlink -f code-server2.1692-vsc1.39.2-linux-x86_64/code-server
+    /users/PZS0562/efranz/code-server2.1692-vsc1.39.2-linux-x86_64/code-server
+    ```
+
+4. Update the path to the code-server binary in the script https://github.com/OSC/bc_osc_codeserver/blob/3082790ee69c82fe6fe757074da7d8d18c7d7e3d/template/script.sh.erb#L27:
+
+    ```diff
+     # An arbitrary path...
+    - /fs/project/PZS0714/mrodgers/bin/code-server-2.1523-vsc1.38.1 \
+    + /users/PZS0562/efranz/code-server2.1692-vsc1.39.2-linux-x86_64/code-server
+     --auth=password \
+     --port="$port" \
+    ```
+
+5. Update form.yml to use the correct cluster, and any other changes as necessary to form.yml or submit.yml that is appropriate for your cluster.
+
+
 
 To update the app you would:
 
