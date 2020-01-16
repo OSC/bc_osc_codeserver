@@ -72,6 +72,11 @@ scl enable git29 -- git checkout <tag/branch>
 
 Again, you do not need to restart the app as it isn't a Passenger app.
 
+## Known Issues
+
+- In-app installation of extensions does not work
+- The authentication provided by code-server is unencrypted
+
 ## Contributing
 
 1. Fork it ( https://github.com/OSC/bc_osc_codeserver/fork )
@@ -79,8 +84,3 @@ Again, you do not need to restart the app as it isn't a Passenger app.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
-
-## Known Issues
-
-- In-app installation of extensions does not work
-- The authentication provided by code-server is unencrypted
