@@ -60,7 +60,7 @@ use and place this wherever you store batch connect apps (`/var/www/ood/apps/sys
 
 5. Update form.yml to use the correct cluster, and any other changes as necessary to form.yml or submit.yml that is appropriate for your cluster.
 
-
+## Update
 
 To update the app you would:
 
@@ -83,3 +83,4 @@ Again, you do not need to restart the app as it isn't a Passenger app.
 ## Known Issues
 
 - In-app installation of extensions does not work
+- The authentication provided by code-server is unencrypted
