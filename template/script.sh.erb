@@ -9,8 +9,12 @@
     end
 %>
 
-# Ensure a dataroot for Code Server
+# Setup environment
+CODE_SERVER="${CODE_SERVER:-/users/PZS0562/efranz/code-server2.1692-vsc1.39.2-linux-x86_64/code-server}"
 CODE_SERVER_DATAROOT="$HOME/.local/share/bc_osc_codeserver"
+
+
+# Ensure a dataroot for Code Server
 mkdir -p "$CODE_SERVER_DATAROOT/extensions"
 
 # Expose the password to the server
@@ -22,9 +26,10 @@ module load git
 #
 # Start Code Server
 #
+echo $CODE_SERVER
 
 # An arbitrary path...
-/fs/project/PZS0714/mrodgers/bin/code-server-2.1523-vsc1.38.1 \
+$CODE_SERVER \
     --auth=password \
     --port="$port" \
     --disable-telemetry \
