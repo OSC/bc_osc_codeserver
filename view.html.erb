@@ -1,6 +1,29 @@
-<form action="/rnode/<%= host %>/<%= port %>/login/" method="post" target="_blank">
-  <input type="hidden" name="password" value="<%= password %>">
+<%
+  require 'digest'
+
+  # Generate form id, based on host and port
+  form_id = Digest::SHA1.hexdigest("--" + host.to_s + "--" + port.to_s + "--")
+
+  # Generate SHA256 digest of Code Server Password
+  cookieValue = Digest::SHA256.hexdigest(password)
+-%>
+
+<script>
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/rnode/" + "<%= host.to_s %>" + "/" + "<%= port.to_s %>/";
+}
+
+var s = document.getElementById("<%= form_id %>").closest(".panel").id;
+var p = "<%= cookieValue %>";
+var c = "key";
+var e = 7;
+</script>
+
+<form id="<%= form_id %>" action="/rnode/<%= host %>/<%= port %>/" method="GET" target="_blank" onsubmit="setCookie(c, p, e)">
   <button class="btn btn-primary" type="submit">
-    <i class="fa fa-cogs"></i> Connect to Code Server
+    <i class="fa fa-cogs"></i> Connect to VS Code
   </button>
 </form>
