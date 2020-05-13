@@ -17,10 +17,10 @@
  */
 
 function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  var expires = "expires="+ d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/rnode/" + "<%= host.to_s %>" + "/" + "<%= port.to_s %>/";
+  const date = new Date();
+  date.setTime(date.getTime() + (exdays*24*60*60*1000));
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/rnode/" + "<%= host.to_s %>" + "/" + "<%= port.to_s %>/" + ";secure";
 }
 
 var s = document.getElementById("<%= form_id %>").closest(".panel").id;
