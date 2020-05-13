@@ -14,13 +14,20 @@
  * https://github.com/stanford-rc/sh_ood-apps/blob/master/sh_tensorboard/view.html.erb
  *
  * View license in ~/LICENSE
+ *
+ * cookieName String
+ * cookieValue String
+ * expiration Integer
  */
-
-function setCookie(cname, cvalue, exdays) {
+function setCookie(cookieName, cookieValue, expiration) {
   const date = new Date();
-  date.setTime(date.getTime() + (exdays*24*60*60*1000));
+  date.setTime(date.getTime() + (expiration*24*60*60*1000));
+
   const expires = "expires=" + date.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/rnode/" + "<%= host.to_s %>" + "/" + "<%= port.to_s %>/" + ";secure";
+  const cookiePath = "path=/rnode/" + "<%= host.to_s %>" + "/" + "<%= port.to_s %>/";
+
+  const cookie = `${cookieName}=${cookieValue};${expires};${cookiePath};secure`;
+  document.cookie = cookie;
 }
 
 var s = document.getElementById("<%= form_id %>").closest(".panel").id;
@@ -30,7 +37,7 @@ var e = 7;
 </script>
 
 <form id="<%= form_id %>" action="/rnode/<%= host %>/<%= port %>/" method="GET" target="_blank" onsubmit="setCookie(c, p, e)">
-  <button class="btn btn-primary" type="submit">
+  <button class="btn btn-primary" type="submit" id="<%= form_id %>_button">
     <i class="fa fa-cogs"></i> Connect to VS Code
   </button>
 </form>
