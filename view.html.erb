@@ -6,38 +6,47 @@
 
   # Generate SHA256 digest of Code Server Password
   cookieValue = Digest::SHA256.hexdigest(password)
--%>
+%>
 
 <script>
-/**
- * Adapted from Stanford sh_tensorboard:
- * https://github.com/stanford-rc/sh_ood-apps/blob/master/sh_tensorboard/view.html.erb
- *
- * View license in ~/LICENSE
- *
- * cookieName String
- * cookieValue String
- * expiration Integer
- */
-function setCookie(cookieName, cookieValue, expiration) {
-  const date = new Date();
-  date.setTime(date.getTime() + (expiration*24*60*60*1000));
+var cookiesJs = document.createElement('script')
+cookiesJs.id = 'cookiesJs'
+cookiesJs.src = 'https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js'
 
-  const expires = "expires=" + date.toUTCString();
-  const cookiePath = "path=/rnode/" + "<%= host.to_s %>" + "/" + "<%= port.to_s %>/";
+var stimulusJs = document.createElement('script')
+stimulusJs.id = 'stimulusJs'
+stimulusJs.src = 'https://unpkg.com/stimulus/dist/stimulus.umd.js'
 
-  const cookie = `${cookieName}=${cookieValue};${expires};${cookiePath};secure`;
-  document.cookie = cookie;
+var scripts = [cookiesJs, stimulusJs]
+scripts.forEach(function (script) {
+  if (document.getElementById(script.id) == null) {
+    document.head.appendChild(script)
+  }
+})
+
+stimulusJs.onload = () => {
+  (() => {
+    const application = Stimulus.Application.start()
+
+    application.register('code-server', class extends Stimulus.Controller {
+      setCodeServerCookie (event) {
+        event.preventDefault()
+
+        let path = this.data.get('path')
+        Cookies.set('key', this.data.get('password'), {
+          expires: 7,
+          path,
+        })
+
+        window.open(path, '_blank')
+      }
+    })
+  })()
 }
-
-var s = document.getElementById("<%= form_id %>").closest(".panel").id;
-var p = "<%= cookieValue %>";
-var c = "key";
-var e = 7;
 </script>
 
-<form id="<%= form_id %>" action="/rnode/<%= host %>/<%= port %>/" method="GET" target="_blank" onsubmit="setCookie(c, p, e)">
-  <button class="btn btn-primary" type="submit" id="<%= form_id %>_button">
+<form data-controller="code-server" data-action="code-server#setCodeServerCookie" data-code-server-path="/rnode/<%= host.to_s %>/<%= port.to_s %>/" data-code-server-password="<%= cookieValue %>">
+  <button class="btn btn-primary">
     <i class="fa fa-cogs"></i> Connect to VS Code
   </button>
 </form>
