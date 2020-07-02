@@ -8,44 +8,35 @@
   cookieValue = Digest::SHA256.hexdigest(password)
 %>
 
-<script>
-var cookiesJs = document.createElement('script')
-cookiesJs.id = 'cookiesJs'
-cookiesJs.src = 'https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js'
+<script type="text/javascript">
+$('#<%= form_id %>').submit(function (event) {
+  event.preventDefault()
 
-var stimulusJs = document.createElement('script')
-stimulusJs.id = 'stimulusJs'
-stimulusJs.src = 'https://unpkg.com/stimulus/dist/stimulus.umd.js'
-
-var scripts = [cookiesJs, stimulusJs]
-scripts.forEach(function (script) {
-  if (document.getElementById(script.id) == null) {
-    document.head.appendChild(script)
-  }
+  let date = new Date()
+  date.setTime(date.getTime() + (7*24*60*60*1000))
+  let expires = "expires=" + date.toUTCString()
+  let cookiePath = "path=/rnode/" + "<%= host.to_s %>" + "/" + "<%= port.to_s %>/";
+  let cookie = `key=<%= cookieValue %>;${expires};${cookiePath};secure`;
+  document.cookie = cookie;
+  window.open('/rnode/<%= host.to_s %>/<%= port.to_s %>/', '_blank')
 })
 
-stimulusJs.onload = () => {
-  (() => {
-    const application = Stimulus.Application.start()
+window.addEventListener('DOMContentLoaded', function () {
+  $('#<%= form_id %>').submit(function (event) {
+    event.preventDefault()
 
-    application.register('code-server', class extends Stimulus.Controller {
-      setCodeServerCookie (event) {
-        event.preventDefault()
-
-        let path = this.data.get('path')
-        Cookies.set('key', this.data.get('password'), {
-          expires: 7,
-          path,
-        })
-
-        window.open(path, '_blank')
-      }
-    })
-  })()
-}
+    let date = new Date()
+    date.setTime(date.getTime() + (7*24*60*60*1000))
+    let expires = "expires=" + date.toUTCString()
+    let cookiePath = "path=/rnode/" + "<%= host.to_s %>" + "/" + "<%= port.to_s %>/";
+    let cookie = `key=<%= cookieValue %>;${expires};${cookiePath};secure`;
+    document.cookie = cookie;
+    window.open('/rnode/<%= host.to_s %>/<%= port.to_s %>/', '_blank')
+  })
+})
 </script>
 
-<form data-controller="code-server" data-action="code-server#setCodeServerCookie" data-code-server-path="/rnode/<%= host.to_s %>/<%= port.to_s %>/" data-code-server-password="<%= cookieValue %>">
+<form id="<%= form_id %>">
   <button class="btn btn-primary">
     <i class="fa fa-cogs"></i> Connect to VS Code
   </button>
