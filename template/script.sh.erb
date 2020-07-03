@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 <%
-require 'shellwords'
-
 # Determine the application root from session token.
 app_root = BatchConnect::App.from_token(session.token).root.realpath
 
