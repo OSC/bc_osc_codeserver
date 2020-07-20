@@ -7,7 +7,7 @@ app_root = BatchConnect::App.from_token(session.token).root.realpath
 working_dir = Pathname.new(context.working_dir)
 
 # Ensure that code-server always starts up in either a user defined directory or the home directory.
-if ! working_dir.exist? || working_dir.to_s.empty?
+if ! working_dir.exist?
     working_dir = Pathname.new(ENV['HOME'])
 elsif working_dir.file?
     working_dir = working_dir.parent
