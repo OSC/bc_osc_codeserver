@@ -14,10 +14,6 @@ elsif working_dir.file?
 end
 %>
 
-# Load modules.
-module purge
-module load ondemand xalt/latest python/3.6-conda5.2
-
 # Setup environment.
 APP_ROOT="<%= app_root.to_s %>"
 CODE_SERVER_DATAROOT="$HOME/.local/share/bc_osc_codeserver"
