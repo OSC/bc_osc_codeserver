@@ -37,15 +37,15 @@ use and place this wherever you store batch connect apps (`/var/www/ood/apps/sys
 
     ```sh
     # replace URL with latest release from code-server
-    wget https://github.com/cdr/code-server/releases/download/2.1692-vsc1.39.2/code-server2.1692-vsc1.39.2-linux-x86_64.tar.gz
-    tar -xzf code-server2.1692-vsc1.39.2-linux-x86_64.tar.gz
+    wget https://github.com/cdr/code-server/releases/download/3.2.0/code-server-3.2.0-linux-x86_64.tar.gz
+    tar -xzf code-server-3.2.0-linux-x86_64.tar.gz
     ```
     
 3. You will notice code-server is an executable inside that directory and can get the full path: 
     
     ```sh
-    $ readlink -f code-server2.1692-vsc1.39.2-linux-x86_64/code-server
-    /users/PZS0562/efranz/code-server2.1692-vsc1.39.2-linux-x86_64/code-server
+    $ readlink -f code-server-3.2.0-linux-x86_64.tar.gz
+    /users/PZS0562/efranz/code-server-3.2.0-linux-x86_64.tar.gz
     ```
 
 4. Update the path to the code-server binary in the script https://github.com/OSC/bc_osc_codeserver/blob/3082790ee69c82fe6fe757074da7d8d18c7d7e3d/template/script.sh.erb#L27:
@@ -53,7 +53,7 @@ use and place this wherever you store batch connect apps (`/var/www/ood/apps/sys
     ```diff
      # An arbitrary path...
     - /fs/project/PZS0714/mrodgers/bin/code-server-2.1523-vsc1.38.1 \
-    + /users/PZS0562/efranz/code-server2.1692-vsc1.39.2-linux-x86_64/code-server \
+    + /users/PZS0562/efranz/code-server-3.2.0-linux-x86_64/code-server \
      --auth=password \
      --port="$port" \
     ```
