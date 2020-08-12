@@ -16,12 +16,11 @@ end
 
 # Setup environment.
 APP_ROOT="<%= app_root.to_s %>"
-CODE_SERVER_DATAROOT="$HOME/.local/share/bc_osc_codeserver"
+CODE_SERVER_DATAROOT="${CODE_SERVER_DATAROOT:=$HOME/.local/share/bc_osc_codeserver}"
 
-# Path to Code Server binary. /code-server/ is expected to be a symlink to #{CODE_SERVER_FOLDER}/bin/code-server
+# Path to Code Server binary. CODE_SERVER is the path to the code-server binary deployed on compute nodes.
 #
-# ln -s code-server-3.3.1-linux-x86_64 code-server
-CODE_SERVER="${CODE_SERVER:-${APP_ROOT}/code-server/bin/code-server}"
+CODE_SERVER="${CODE_SERVER:=${APP_ROOT}/code-server/bin/code-server}"
 
 # Ensure a dataroot for Code Server.
 mkdir -p "$CODE_SERVER_DATAROOT/extensions"

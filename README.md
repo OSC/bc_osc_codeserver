@@ -37,25 +37,24 @@ use and place this wherever you store batch connect apps (`/var/www/ood/apps/sys
 
     ```sh
     # replace URL with latest release from code-server
-    wget https://github.com/cdr/code-server/releases/download/3.2.0/code-server-3.2.0-linux-x86_64.tar.gz
-    tar -xzf code-server-3.2.0-linux-x86_64.tar.gz
+    wget https://github.com/cdr/code-server/releases/download/3.4.1/code-server-3.4.1-linux-amd64.tar.gz
+    tar -xzf code-server-3.4.1-linux-x86_64.tar.gz
+    mv code-server-3.4.1-linux-x86_64 code-server
     ```
     
 3. You will notice code-server is an executable inside that directory and can get the full path: 
     
     ```sh
-    $ readlink -f code-server-3.2.0-linux-x86_64.tar.gz
-    /users/PZS0562/efranz/code-server-3.2.0-linux-x86_64.tar.gz
+    $ readlink -f code-server
+    /users/PZS0562/efranz/code-server/bin/code-server
     ```
 
-4. Update the path to the code-server binary in the script https://github.com/OSC/bc_osc_codeserver/blob/3082790ee69c82fe6fe757074da7d8d18c7d7e3d/template/script.sh.erb#L27:
+4. Update the path to the code-server binary in the script https://github.com/OSC/bc_osc_codeserver/blob/d44f805289557482ad682ee63d4074273f6a1a68/template/script.sh.erb#L23:
 
     ```diff
      # An arbitrary path...
-    - /fs/project/PZS0714/mrodgers/bin/code-server-2.1523-vsc1.38.1 \
-    + /users/PZS0562/efranz/code-server-3.2.0-linux-x86_64/code-server \
-     --auth=password \
-     --port="$port" \
+    - CODE_SERVER="${CODE_SERVER:-/usr/local/code-server/bin/code-server"
+    + CODE_SERVER="/users/PZS0562/efranz/code-server/bin/code-server"
     ```
 
 5. Update form.yml to use the correct cluster, and any other changes as necessary to form.yml or submit.yml that is appropriate for your cluster.
@@ -74,7 +73,6 @@ Again, you do not need to restart the app as it isn't a Passenger app.
 
 ## Known Issues
 
-- In-app installation of extensions does not work
 - The authentication provided by code-server is unencrypted
 
 ## Contributing
