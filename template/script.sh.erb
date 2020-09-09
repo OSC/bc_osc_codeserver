@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 <%
-# Determine the application root from session token.
-app_root = BatchConnect::App.from_token(session.token).root.realpath
 
 # Set our working directory.
 working_dir = Pathname.new(context.working_dir)
@@ -14,16 +12,7 @@ elsif working_dir.file?
 end
 %>
 
-# Setup environment.
-APP_ROOT="<%= app_root.to_s %>"
-CODE_SERVER_DATAROOT="$HOME/.local/share/bc_osc_codeserver"
-
-# Path to Code Server binary. /code-server/ is expected to be a symlink to #{CODE_SERVER_FOLDER}/bin/code-server
-#
-# ln -s code-server-3.3.1-linux-x86_64 code-server
-CODE_SERVER="${CODE_SERVER:-${APP_ROOT}/code-server/bin/code-server}"
-
-# Ensure a dataroot for Code Server.
+CODE_SERVER_DATAROOT="$HOME/.local/share/code-server"
 mkdir -p "$CODE_SERVER_DATAROOT/extensions"
 
 # Expose the password to the server.
@@ -33,9 +22,7 @@ export PASSWORD="$password"
 echo "$(date): Running on compute node ${compute_node}:$port"
 
 # VSCode complains that system git is too old.
-module load git
-
-echo ""
+module load project/ondemand git app_code_server
 
 #
 # Start Code Server.
@@ -43,7 +30,7 @@ echo ""
 echo "$(date): Started code-server"
 echo ""
 
-$CODE_SERVER \
+code-server \
     --auth="password" \
     --bind-addr="0.0.0.0:${port}" \
     --disable-telemetry \
