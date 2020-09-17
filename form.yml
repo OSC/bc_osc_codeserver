@@ -1,5 +1,5 @@
 ---
-cluster: "quick"
+cluster: "pitzer-login"
 form:
   - bc_account
   - bc_num_hours
