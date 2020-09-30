@@ -4,9 +4,9 @@ category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch a [VS Code] server using [Code Server] on the [Owens
+  This app will launch a [VS Code] server using [Code Server] on the [Pitzer
   cluster].
 
   [VS Code]: https://code.visualstudio.com/
   [Code Server]: https://coder.com/
-  [Owens cluster]: https://www.osc.edu/resources/technical_support/supercomputers/owens
+  [Pitzer cluster]: https://www.osc.edu/resources/technical_support/supercomputers/pitzer
