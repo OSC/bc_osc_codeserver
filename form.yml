@@ -3,7 +3,15 @@ cluster: "pitzer-login"
 form:
   - bc_num_hours
   - working_dir
+  - version
 attributes:
+  version:
+    widget: "select"
+    label: "Codeserver Version"
+    options:
+      - 3.9.3
+      - 3.4.1
+
   working_dir:
     label: "Working Directory"
     data-filepicker: true
