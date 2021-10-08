@@ -33,7 +33,7 @@ use and place this wherever you store batch connect apps (`/var/www/ood/apps/sys
     scl enable git29 -- git checkout <tag/branch>
     ```
 
-2. Deloy code-server on your systems.
+2. Deploy code-server on your systems.
 
     ```sh
     # replace URL with latest release from code-server
