@@ -9,6 +9,7 @@ attributes:
     widget: "select"
     label: "Codeserver Version"
     options:
+      - ["4.5", "4.5.1"]
       - ["3.9", "3.9.3"]
       - ["3.4", "3.4.1"]
 
