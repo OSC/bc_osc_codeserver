@@ -23,10 +23,7 @@
 })();
 </script>
 
-<p> test test </p>
-<p> <%= r_version %> </p>
-
-<% if r_version == '4.5.1' %>
+<% if code_server_version == '4.5.1' %>
 <form id="<%= form_id %>" action="/rnode/<%= host %>/<%= port %>/login?to=" method="post" target="_blank">
   <input type="hidden" name="password" value="<%= password %>">
 <% else %>
