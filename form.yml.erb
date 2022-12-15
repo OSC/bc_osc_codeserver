@@ -1,17 +1,30 @@
+<%-
+  groups = OodSupport::User.new.groups.sort_by(&:id).tap { |groups|
+    groups.unshift(groups.delete(OodSupport::Process.group))
+  }.map(&:name).grep(/^P./)
+-%>
 ---
-cluster: "pitzer-login"
+cluster: "pitzer"
 form:
+  - account
   - bc_num_hours
   - working_dir
   - version
 attributes:
+  account:
+    label: "Project"
+    widget: select
+    options:
+      <%- groups.each do |group| %>
+      - "<%= group %>"
+    <%- end %>
   version:
     widget: "select"
     label: "Codeserver Version"
     options:
       - ["3.9", "3.9.3"]
       - ["3.4", "3.4.1"]
-      - ["4.5", "4.5.1"]
+      # - ["4.5", "4.5.1"]
 
   working_dir:
     label: "Working Directory"
