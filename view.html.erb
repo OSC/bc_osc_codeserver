@@ -10,6 +10,7 @@
 
 <script type="text/javascript">
 (function () {
+  nonce="<%= content_security_policy_nonce %>"
   let date = new Date()
   date.setTime(date.getTime() + (7*24*60*60*1000))
   let expires = "expires=" + date.toUTCString()
@@ -23,7 +24,7 @@
 })();
 </script>
 
-<% if code_server_version == '4.5.1' %>
+<% if code_server_version == '4.8.3' %>
 <form id="<%= form_id %>" action="/rnode/<%= host %>/<%= port %>/login?to=" method="post" target="_blank">
   <input type="hidden" name="password" value="<%= password %>">
 <% else %>
