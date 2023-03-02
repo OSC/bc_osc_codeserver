@@ -8,9 +8,8 @@
   cookieValue = Digest::SHA256.hexdigest(password)
 %>
 
-<script type="text/javascript">
+<script type="text/javascript" nonce="<%= content_security_policy_nonce %>">
 (function () {
-  nonce="<%= content_security_policy_nonce %>"
   let date = new Date()
   date.setTime(date.getTime() + (7*24*60*60*1000))
   let expires = "expires=" + date.toUTCString()
