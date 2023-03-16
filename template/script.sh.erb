@@ -55,7 +55,6 @@ code-server \
     --disable-telemetry \
     <%- if code_server_version < '4.5' -%>
     --extra-extensions-dir="$CODE_SERVER_DATAROOT/extensions" \
-    <%- else -%>
     --ignore-last-opened \
     <%- end -%>
     --user-data-dir="$CODE_SERVER_DATAROOT" \
