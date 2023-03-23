@@ -53,10 +53,7 @@ code-server \
     --auth="password" \
     --bind-addr="0.0.0.0:${port}" \
     --disable-telemetry \
-    <% if code_server_version < '4.5' %>
-    # code-server 4.5 will not accept this argument
-    --extra-extensions-dir="$CODE_SERVER_DATAROOT/extensions" \
-    <% end %>
+    --ignore-last-opened \
     --user-data-dir="$CODE_SERVER_DATAROOT" \
     --log debug \
     "<%= working_dir.to_s %>"
