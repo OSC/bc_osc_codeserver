@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.0] - 2023-03-24
+
+### Added
+- [32](https://github.com/OSC/bc_osc_codeserver/pull/32) Codeserver 4.8 support
+
+### Removed
+- - [32](https://github.com/OSC/bc_osc_codeserver/pull/32) Codeserver 3.4 selection
+
 ## [0.4.0] - 2021-08-16
 
 ### Added
@@ -31,7 +39,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release of OSC Code Server.
 
-[Unreleased]: https://github.com/OSC/bc_osc_codeserver/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_codeserver/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/OSC/bc_osc_codeserver/compare/v0.6.0...v0.7.0
 [0.4.0]: https://github.com/OSC/bc_osc_codeserver/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/OSC/bc_osc_codeserver/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/OSC/bc_osc_codeserver/compare/v0.1.0...v0.2.0
