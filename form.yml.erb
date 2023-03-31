@@ -8,7 +8,8 @@ cluster: "pitzer"
 form:
   - account
   - bc_num_hours
-  - working_dir
+  - selector_one
+  - selector_two
   - version
 attributes:
   account:
@@ -24,7 +25,13 @@ attributes:
     options:
       - ["4.8", "4.8.3"]
       - ["3.9", "3.9.3"]
-  working_dir:
+  selector_one:
     widget: "path_selector"
-    label: "Working Directory"
-    help: "Select your project directory; defaults to $HOME"
+    label: "Selector One"
+    help: "Selector One"
+  selector_two:
+    widget: "path_selector"
+    label: "Selector TWO"
+    help: "Selector TWO"
+    options:
+      - hidden
