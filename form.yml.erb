@@ -4,7 +4,7 @@
   }.map(&:name).grep(/^P./)
 -%>
 ---
-cluster: "pitzer"
+cluster: "pc-dev"
 form:
   - account
   - bc_num_hours
@@ -18,12 +18,12 @@ attributes:
       <%- groups.each do |group| %>
       - "<%= group %>"
     <%- end %>
-  version:
-    widget: "select"
-    label: "Codeserver Version"
-    options:
-      - ["4.8", "4.8.3"]
-      - ["3.9", "3.9.3"]
+  # version:
+  #   widget: "select"
+  #   label: "Codeserver Version"
+  #   options:
+  #     - ["4.8", "4.8.3"]
+  #     - ["3.9", "3.9.3"]
 
   working_dir:
     label: "Working Directory"
