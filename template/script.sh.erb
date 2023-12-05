@@ -19,6 +19,7 @@ mkdir -p "$CODE_SERVER_DATAROOT/extensions"
 
 # Expose the password to the server.
 export PASSWORD="$password"
+echo "password is $PASSWORD"
 
 # Print compute node.
 echo "$(date): Running on compute node ${compute_node}:$port"
