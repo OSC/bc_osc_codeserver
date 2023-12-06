@@ -31,7 +31,7 @@ echo "$(date): Running on compute node ${compute_node}:$port"
 
 # Use spack to load code-server
 spack unload --all
-spack load code-server@=4.12.0 argon2
+spack load code-server@=3.9.3 argon2
 
 CPP_FILE="<%= working_dir.to_s %>/.vscode/c_cpp_properties.json"
 
