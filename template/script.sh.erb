@@ -24,7 +24,7 @@ export PASSWORD="$password"
 echo "$(date): Running on compute node ${compute_node}:$port"
 
 # VSCode complains that system git is too old.
-module load project/ondemand git app_code_server/<%= code_server_version %>
+module load code-server/<%= code_server_version %>
 
 CPP_FILE="<%= working_dir.to_s %>/.vscode/c_cpp_properties.json"
 

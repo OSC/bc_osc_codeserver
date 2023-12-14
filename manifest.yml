@@ -4,9 +4,9 @@ category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch a [VS Code] server using [Code Server] on the [Pitzer
+  This app will launch a [VS Code] server using [Code Server] on the [Borah
   cluster].
 
   [VS Code]: https://code.visualstudio.com/
   [Code Server]: https://coder.com/
-  [Pitzer cluster]: https://www.osc.edu/resources/technical_support/supercomputers/pitzer
+  [Borah cluster]: https://bsu-docs.readthedocs.io/en/latest/hpc_resources/#borah
