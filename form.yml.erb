@@ -8,7 +8,6 @@ cluster: "pc-dev"
 form:
   - account
   - bc_num_hours
-  - working_dir
   - version
 attributes:
   account:
@@ -18,16 +17,9 @@ attributes:
       <%- groups.each do |group| %>
       - "<%= group %>"
     <%- end %>
-# version:
-#   widget: "select"
-#   label: "Codeserver Version"
-#   options:
-#     - ["4.8", "4.8.3"]
-#     - ["3.9", "3.9.3"]
-
-  working_dir:
-    label: "Working Directory"
-    data-filepicker: true
-    data-target-file-type: dirs  # Valid values are: files, dirs, or both
-    readonly: false
-    help: "Select your project directory; defaults to $HOME"
+version:
+  widget: "select"
+  label: "Codeserver Version"
+  options:
+    - ["3.10", "3.10.2"]
+    - ["4.12", "4.12.0"]

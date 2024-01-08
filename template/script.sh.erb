@@ -33,7 +33,7 @@ which spack
 
 # Use spack to load code-server
 spack unload --all
-spack load code-server@3.10.2
+spack load "code-server@${code_server_version}"
 
 CPP_FILE="<%= working_dir.to_s %>/.vscode/c_cpp_properties.json"
 
