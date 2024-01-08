@@ -1,7 +1,7 @@
 #!/usr/bin/bash -l
 <%
 
-code_server_version   = context.version
+code_server_version = context.version
 
 # Ensure that code-server always starts up in the home directory.
 working_dir = Pathname.new(ENV['HOME'])
