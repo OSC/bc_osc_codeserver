@@ -25,6 +25,8 @@ echo "$(date): Running on compute node ${compute_node}:$port"
 
 # Activate the shared spack environment
 . /shared/software/spack/share/spack/setup-env.sh
+echo "which spack:"
+which spack
 
 # Use spack to load code-server
 spack unload --all
