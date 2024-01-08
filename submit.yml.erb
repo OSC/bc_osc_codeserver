@@ -4,5 +4,3 @@ batch_connect:
   conn_params:
     - code_server_version
   set_host: "host=$(hostname | awk '{print $1}').<%= cluster%>.pcluster"
-script:
-  accounting_id: <%= account %>

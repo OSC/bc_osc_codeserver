@@ -6,20 +6,19 @@
 ---
 cluster: "pc-dev"
 form:
-  - account
   - bc_num_hours
-  - version
+  - bc_num_slots
+  # - version
 attributes:
-  account:
-    label: "Project"
-    widget: select
-    options:
-      <%- groups.each do |group| %>
-      - "<%= group %>"
-    <%- end %>
-  version:
-    widget: "select"
-    label: "Codeserver Version"
-    options:
-      - ["3.10", "3.10.2"]
-      - ["4.12", "4.12.0"]
+  bc_num_slots:
+    widget: "number_field"
+    label: "Number of CPUs"
+    min: 1
+    max: 4
+    step: 1
+  # version:
+  #   widget: "select"
+  #   label: "Codeserver Version"
+  #   options:
+  #     - ["3.10", "3.10.2"]
+  #     - ["4.12", "4.12.0"]
