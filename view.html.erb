@@ -1,6 +1,5 @@
 <%
   require 'digest'
-  require 'argon2'
 
   # Generate form id, based on host and port
   form_id = Digest::SHA1.hexdigest("--" + host.to_s + "--" + port.to_s + "--")
