@@ -6,8 +6,7 @@
   form_id = Digest::SHA1.hexdigest("--" + host.to_s + "--" + port.to_s + "--")
 
   # Generate SHA256 digest of Code Server Password
-  # cookieValue = Digest::SHA256.hexdigest(password)
-  cookieValue = Argon2::Password.create(password)
+  cookieValue = Digest::SHA256.hexdigest(password)
 %>
 
 <script type="text/javascript">
