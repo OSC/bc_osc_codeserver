@@ -17,6 +17,12 @@ end
 CODE_SERVER_DATAROOT="$HOME/.local/share/code-server"
 mkdir -p "$CODE_SERVER_DATAROOT/extensions"
 
+# Expose the password to the server.
+export PASSWORD="$password"
+echo "password is $PASSWORD"
+# echo -n "$password" | npx argon2-cli -e # this won't work but maybe something else will
+# export HASHED_PASSWORD="<hash>"
+
 # Print compute node.
 echo "$(date): Running on compute node ${compute_node}:$port"
 
