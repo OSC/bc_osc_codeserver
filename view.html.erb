@@ -23,11 +23,11 @@
 })();
 </script>
 
-<% if code_server_version == '4.8.3' %>
-<form id="<%= form_id %>" action="/rnode/<%= host %>/<%= port %>/login?to=" method="post" target="_blank">
-  <input type="hidden" name="password" value="<%= password %>">
+<% if code_server_version == '4.12.0' %>
+  <form id="<%= form_id %>" action="/rnode/<%= host %>/<%= port %>/login?to=" method="post" target="_blank">
+    <input type="hidden" name="password" value="<%= password %>">
 <% else %>
-<form id="<%= form_id %>" action="/rnode/<%= host %>/<%= port %>/" method="get" target="_blank">
+  <form id="<%= form_id %>" action="/rnode/<%= host %>/<%= port %>/" method="get" target="_blank">
 <% end %>
   <button class="btn btn-primary" type="submit">
     <i class="fa fa-cogs"></i> Connect to VS Code
