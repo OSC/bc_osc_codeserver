@@ -4,7 +4,8 @@
   }.map(&:name).grep(/^P./)
 -%>
 ---
-cluster: "pc-dev"
+cluster: "*"
+cacheable: false
 form:
   - bc_num_hours
   - bc_num_slots
