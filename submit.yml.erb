@@ -4,3 +4,7 @@ batch_connect:
   conn_params:
     - code_server_version
   set_host: "host=$(hostname | awk '{print $1}').<%= cluster%>.pcluster"
+script:
+  native:
+    - "--nodes=1"
+    - "--cpus-per-task=<%= custom_num_cores.blank ? 1 : custom_num_cores.to_i %>"
