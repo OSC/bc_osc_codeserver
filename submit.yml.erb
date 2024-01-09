@@ -7,4 +7,4 @@ batch_connect:
 script:
   native:
     - "--nodes=1"
-    - "--cpus-per-task=<%= custom_num_cores.blank ? 1 : custom_num_cores.to_i %>"
+    - "--cpus-per-task=<%= custom_num_cores.blank? ? 1 : custom_num_cores.to_i %>"
