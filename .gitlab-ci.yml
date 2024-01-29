@@ -22,7 +22,7 @@ rpm-build:
     - ./tmp/ondemand-packaging/bin/ood_packaging -w $CI_PROJECT_DIR/tmp/work -o $CI_PROJECT_DIR/tmp/output -V $CI_COMMIT_TAG -T $CI_PROJECT_DIR
   parallel:
     matrix:
-      - OOD_PACKAGING_DIST: [el7, el8]
+      - OOD_PACKAGING_DIST: [el8]
   artifacts:
     paths:
       - tmp/output
