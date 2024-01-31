@@ -7,6 +7,11 @@ code_server_version = context.version
 working_dir = Pathname.new(ENV['HOME'])
 %>
 
+echo "original HOME=$HOME"
+echo "user=$(id -nu)"
+export HOME="/shared/home/$(id -nu)"
+echo "new HOME=$HOME"
+
 CODE_SERVER_DATAROOT="$HOME/.local/share/code-server"
 mkdir -p "$CODE_SERVER_DATAROOT/extensions"
 
