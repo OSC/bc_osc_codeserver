@@ -1,4 +1,16 @@
 #!/usr/bin/bash -l
+
+# Validate home directory and set it to what it should be
+echo "original HOME=$HOME"
+echo "user=$(id -nu)"
+export HOME="/shared/home/$(id -nu)"
+echo "new HOME=$HOME"
+
+# Validate shell and set it to what it should be
+echo "original SHELL=$SHELL"
+export SHELL="/bin/bash"
+echo "new SHELL=$SHELL"
+
 <%
 
 code_server_version = context.version
