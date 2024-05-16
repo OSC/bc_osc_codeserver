@@ -74,7 +74,6 @@ Again, you do not need to restart the app as it isn't a Passenger app.
 
 ## Known Issues
 
-- In-app installation of extensions does not work
 - The authentication provided by code-server is unencrypted
 
 ## Contributing
