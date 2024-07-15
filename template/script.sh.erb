@@ -26,19 +26,20 @@ mkdir -p "$CODE_SERVER_DATAROOT/extensions"
 export PASSWORD="$password"
 
 # Print compute node.
-echo "$(date): Running on compute node ${compute_node}:$port"
+echo "TIMING: $(date -Iseconds) - Running on compute node ${compute_node}:$port"
 
 # VSCode complains that system git is too old.
 # module load project/ondemand git app_code_server/<%= code_server_version %>
 
 # Activate the shared spack environment
 . /shared/spack/share/spack/setup-env.sh
-echo "which spack:"
+echo "TIMING: $(date -Iseconds) - Loaded spack"
 which spack
 
 # Use spack to load code-server
 spack unload --all
-spack load code-server@<%= code_server_version %>
+spack env activate codeserver
+echo "TIMING: $(date -Iseconds) - Activated spack environment"
 
 CPP_FILE="<%= working_dir.to_s %>/.vscode/c_cpp_properties.json"
 
@@ -60,7 +61,7 @@ if [[ -f "$CPP_FILE" ]]; then
 #
 # Start Code Server.
 #
-echo "$(date): Started code-server"
+echo "TIMING: $(date -Iseconds) - Starting code-server"
 echo ""
 
 code-server \
