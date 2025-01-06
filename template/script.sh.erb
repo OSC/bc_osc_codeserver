@@ -23,7 +23,10 @@ export PASSWORD="$password"
 # Print compute node.
 echo "$(date): Running on compute node $(hostname):$port"
 
+<% if context.cluster == 'pitzer' %>
 # VSCode complains that system git is too old.
+module load git
+<% end %>
 module load project/ondemand app_code_server/<%= code_server_version %>
 
 CPP_FILE="<%= working_dir.to_s %>/.vscode/c_cpp_properties.json"
