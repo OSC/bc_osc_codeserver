@@ -14,7 +14,10 @@ attributes:
     label: "Codeserver Version"
     options:
       - ["4.8", "4.8.3"]
-      - ["3.9", "3.9.3"]
+      - [
+          "3.9", "3.9.3",
+          data-option-for-cluster-ascend: false,
+        ]
 
   working_dir:
     widget: "path_selector"
