@@ -2,7 +2,7 @@ variables:
   # older versions of git have issues fetching.
   GIT_STRATEGY: clone
   OOD_PACKAGING_DEBUG: 'true'
-  OOD_PACKAGING_GPG_PRIVATE_KEY: /systems/osc_certs/gpg/ondemand/ondemand.sec
+  OOD_PACKAGING_GPG_PRIVATE_KEY: /systems/osc_certs/gpg/ondemand/ondemand-sha512.sec
   OOD_PACKAGING_GPG_PASSPHRASE: /systems/osc_certs/gpg/ondemand/.gpgpass
 
 before_script:
@@ -23,6 +23,8 @@ rpm-build:
   parallel:
     matrix:
       - OOD_PACKAGING_DIST: [el8]
+        OOD_PACKAGING_GPG_PRIVATE_KEY: /systems/osc_certs/gpg/ondemand/ondemand.sec
+      - OOD_PACKAGING_DIST: [el9]
   artifacts:
     paths:
       - tmp/output
