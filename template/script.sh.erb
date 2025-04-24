@@ -26,7 +26,7 @@ mkdir -p "$CODE_SERVER_DATAROOT/extensions"
 export PASSWORD="$password"
 
 # Print compute node.
-echo "TIMING: $(date -Iseconds) - Running on compute node ${compute_node}:$port"
+echo "TIMING: $(date -Iseconds) - Running on compute node ${SLURMD_NODENAME}:$port"
 
 # VSCode complains that system git is too old.
 # module load project/ondemand git app_code_server/<%= code_server_version %>
