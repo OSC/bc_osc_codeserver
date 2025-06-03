@@ -3,22 +3,15 @@
 cluster: 
   - "ascend"
   - "pitzer"
+  - "pitzer-rhel9"
 form:
   - auto_accounts
   - bc_num_hours
   - working_dir
-  - version
+  - auto_modules_app_code_server
 attributes:
-  version:
-    widget: "select"
-    label: "Codeserver Version"
-    options:
-      - ["4.8", "4.8.3"]
-      - [
-          "3.9", "3.9.3",
-          data-option-for-cluster-ascend: false,
-        ]
-
+  auto_modules_app_code_server:
+    default: false
   working_dir:
     widget: "path_selector"
     label: "Working Directory"
