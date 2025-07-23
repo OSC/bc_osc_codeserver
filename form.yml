@@ -3,7 +3,6 @@
 cluster: 
   - "ascend"
   - "pitzer"
-  - "pitzer-rhel9"
 form:
   - auto_accounts
   - bc_num_hours
