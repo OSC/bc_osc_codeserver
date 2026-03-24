@@ -11,9 +11,12 @@ form:
 attributes:
   auto_modules_app_code_server:
     default: false
+  bc_num_hours:
+    display: true
   working_dir:
     widget: "path_selector"
     label: "Working Directory"
     data-target-file-type: dirs  # Valid values are: files, dirs, or both
     readonly: false
     help: "Select your project directory; defaults to $HOME"
+    display: true
