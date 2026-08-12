@@ -40,41 +40,6 @@ if [[ -f "$CPP_FILE" ]]; then
     mv "$CPP_FILE".new "$CPP_FILE"
   fi
 
-# Create an empty settings file if one doesn't exist
-USER_SETTINGS_DIR="$CODE_SERVER_DATAROOT/User"
-USER_SETTINGS_FILE="$USER_SETTINGS_DIR/settings.json"
-
-mkdir -p "$USER_SETTINGS_DIR"
-
-if [[ ! -f "$USER_SETTINGS_FILE" ]]; then
-  echo '{}' > "$USER_SETTINGS_FILE"
-fi
-
-# Merge default settings into the user's settings
-# User settings take precedence
-jq -s '.[0] * .[1]' \
-    <(cat <<'EOF'
-{
-  "search.followSymlinks": false,
-  "search.exclude": {
-    "**/.git": true,
-    "**/node_modules": true,
-    "**/scratch": true
-  },
-  "telemetry.telemetryLevel": "off",
-  "chat.disableAIFeatures": true,
-  "chat.agent.enabled": false,
-  "chat.commandCenter.enabled": false,
-  "workbench.settings.showAISearchToggle": false,
-  "terminal.integrated.initialHint": false
-}
-EOF
-) \
-    "$USER_SETTINGS_FILE" \
-    > "$USER_SETTINGS_FILE.new"
-
-mv "$USER_SETTINGS_FILE.new" "$USER_SETTINGS_FILE"
-
 #
 # Start Code Server.
 #
