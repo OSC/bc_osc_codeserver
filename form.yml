@@ -11,7 +11,6 @@ form:
 attributes:
   auto_modules_app_code_server:
     default: false
-    help: "GitHub Copilot is available in newer versions of Code Server. You are responsible for ensuring your use complies with your institution's AI data policies."
   working_dir:
     widget: "path_selector"
     label: "Working Directory"
