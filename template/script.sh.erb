@@ -40,6 +40,10 @@ if [[ -f "$CPP_FILE" ]]; then
     mv "$CPP_FILE".new "$CPP_FILE"
   fi
 
+# Copy machine settings file
+mkdir -p "$CODE_SERVER_DATAROOT/Machine"
+cp "$CODE_SERVER_MACHINE_SETTINGS" "$CODE_SERVER_DATAROOT/Machine/settings.json"
+
 #
 # Start Code Server.
 #
