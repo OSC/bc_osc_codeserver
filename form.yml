@@ -3,11 +3,21 @@
 cluster: 
   - "ascend"
   - "pitzer"
+  - "cardinal"
 form:
-  - auto_accounts
-  - bc_num_hours
-  - working_dir
   - auto_modules_app_code_server
+  - auto_accounts
+  - global_job_type
+  - global_enable_mem
+  - global_num_cores
+  - global_mem
+  - bc_num_hours
+  - global_gpus
+  - global_gpu_type
+  - global_enable_vis
+  - global_enable_debug
+  - global_default_values
+  - working_dir
 attributes:
   auto_modules_app_code_server:
     default: false

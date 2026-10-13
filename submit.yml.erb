@@ -3,3 +3,32 @@ batch_connect:
   template: "basic"
   conn_params:
     - code_server_version
+script:
+  # set GPUs
+  <%- if global_gpus.to_i > 0 -%>
+  gpus_per_node: <%= global_gpus %>
+  <%- end %>
+  native:
+  # set CPUSs
+  - "--ntasks-per-node"
+  - "<%= global_num_cores.to_i %>"
+  # set partition
+  - "--partition"
+  <%- if global_enable_debug.to_i == 1 -%>
+  - "debug"
+  <%- elsif global_gpus.to_i > 0 -%>
+  - "<%= global_gpu_type.split('-').drop(1).join('-') %>"
+  <%- else %>
+  - "batch"
+  <%- end %>
+  # set memory
+  <%- if global_enable_mem.to_i == 1 -%>
+  - "--mem"
+  - "<%= global_mem.to_i%>G"
+  <%- end %>
+  # set visualization
+  <%- if global_enable_vis.to_i == 1 -%>
+  - "--gres"
+  - "vis"
+  <%- end %>
+
